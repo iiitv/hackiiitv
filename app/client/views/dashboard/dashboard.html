@@ -1,0 +1,256 @@
+<div id="dashboard" class="page">
+  <div class="divided title">
+    Dashboard
+  </div>
+
+  <div class="ui stackable centered page grid">
+    <div class="column">
+      <div class="ui status segment">
+        <div class="small title">
+          Your status:
+        </div>
+        <br>
+
+        <div
+          class="state"
+          ng-class="user.status.name"
+          ng-if="!showWaitlist && !dashState('admittedAndCannotConfirm')">
+          {{user.status.name}}
+        </div>
+
+        <div
+          class="declined state"
+          ng-if="dashState('admittedAndCannotConfirm')">
+          Expired Admission
+        </div>
+
+
+        <div
+          ng-if="showWaitlist"
+          class="waitlist state">
+          On waitlist
+        </div>
+
+        <div class="ui divider"></div>
+
+        <div ng-if="user.profile.name.length > 0">
+          <p>
+            <strong>
+              Welcome back, {{user.profile.name}}!
+            </strong>
+          </p>
+          <p>
+          </p>
+        </div>
+
+        <div
+          ng-if="dashState('unverified')"
+          class="description">
+          <p>
+            <strong>
+            Your email address ({{user.email}}) is not yet verified.
+            </strong>
+          </p>
+          <p>
+            {{ DASHBOARD.UNVERIFIED }}
+          </p>
+          <div class="ui purple button" ng-click="resendEmail()">
+            Resend verification email
+          </div>
+        </div>
+
+        <div
+          ng-class="settings.timeClose"
+          ng-if="!dashState('admittedAndCanConfirm') || !dashState('admittedAndCannotConfirm') || !dashState('confirmed') || !dashState('declined')">
+          <strong>
+            Registration Deadline:
+          </strong>
+          {{ timeClose }}
+        </div>
+
+        <div
+          ng-class="settings.timeConfirm"
+          ng-if="dashState('admittedAndCanConfirm') || dashState('admittedAndCannotConfirm') || dashState('confirmed') || dashState('declined')">
+          <strong>
+            Confirmation Deadline:
+          </strong>
+          {{ timeConfirm }}
+        </div>
+
+        <div
+          ng-if="dashState('openAndIncomplete')"
+          class="description">
+          <p>
+            <strong>
+                {{ DASHBOARD.INCOMPLETE_TITLE }}
+            </strong>
+          </p>
+          <p>
+            {{ DASHBOARD.INCOMPLETE }}
+          </p>
+
+          <div class="ui purple button"
+               ui-sref="app.application">
+            Complete your application
+          </div>
+
+        </div>
+
+        <div
+          ng-if="dashState('openAndSubmitted')"
+          class="description">
+          <p>
+            <strong>
+                {{ DASHBOARD.SUBMITTED_TITLE }}
+            </strong>
+          </p>
+          <p>
+            {{ DASHBOARD.SUBMITTED }}
+          </p>
+          <div class="ui purple button"
+               ui-sref="app.application">
+            Edit your application
+          </div>
+
+          <div
+            class="ui pink button"
+            ng-show="!user.teamCode"
+            ui-sref="app.team">
+            Create or join a team
+          </div>
+
+          <div
+            class="ui pink button"
+            ng-show="user.teamCode"
+            ui-sref="app.team">
+            View your Team
+          </div>
+
+        </div>
+
+        <div
+          ng-if="dashState('closedAndIncomplete')">
+          <p>
+            <strong>
+                {{ DASHBOARD.CLOSED_AND_INCOMPLETE_TITLE }}
+            </strong>
+          </p>
+          <p>
+            {{ DASHBOARD.CLOSED_AND_INCOMPLETE }}
+          </p>
+        </div>
+
+        <div
+          ng-if="dashState('closedAndSubmitted')"
+          class="description" >
+
+          <div
+            class="markdown"
+            ng-bind-html="waitlistText">
+          </div>
+
+          <div class="ui purple button"
+               ui-sref="app.application">
+            View your application
+          </div>
+
+          <div
+            class="ui pink button"
+            ng-show="user.teamCode"
+            ui-sref="app.team">
+            View your Team
+          </div>
+        </div>
+
+        <div
+          class="description"
+          ng-if="dashState('admittedAndCanConfirm')">
+
+          <div class="markdown">
+            <h4>
+                {{ DASHBOARD.ADMITTED_AND_CAN_CONFIRM_TITLE }}
+            </h4>
+          </div>
+
+          <div
+            class="markdown"
+            ng-bind-html="acceptanceText">
+          </div>
+
+          <div class="markdown">
+            <h4>
+                {{ DASHBOARD.ADMITTED_AND_CAN_CONFIRM }}
+            </h4>
+          </div>
+
+          <div class="ui purple button"
+               ui-sref="app.confirmation">
+            Confirm your spot
+          </div>
+
+          <div class="ui red button"
+               ng-click="declineAdmission()">
+            Sorry, I can't make it
+          </div>
+
+        </div>
+
+        <div
+          class="description"
+          ng-if="dashState('admittedAndCannotConfirm')">
+
+          <div class="markdown">
+            <h4>
+                {{ DASHBOARD.ADMITTED_AND_CANNOT_CONFIRM_TITLE }}
+            </h4>
+
+            <p>
+                {{ DASHBOARD.ADMITTED_AND_CANNOT_CONFIRM }}
+            </p>
+          </div>
+
+        </div>
+
+        <div
+          class="description"
+          ng-if="dashState('confirmed')">
+
+          <div
+            ng-show="!pastConfirmation"
+            class="markdown">
+            <h4>
+                {{ DASHBOARD.CONFIRMED_NOT_PAST_TITLE }}
+            </h4>
+          </div>
+
+          <div
+            class="markdown"
+            ng-bind-html="confirmationText">
+          </div>
+
+          <div class="ui purple button"
+               ui-sref="app.confirmation">
+            {{pastConfirmation ? 'View' : 'Edit'}} your confirmation information
+          </div>
+
+          <div class="ui red button"
+               ng-click="declineAdmission()">
+            Sorry, I can't make it
+          </div>
+
+        </div>
+
+        <div
+          class="description"
+          ng-if="dashState('declined')">
+
+          <p>
+            {{ DASHBOARD.DECLINED }}
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
