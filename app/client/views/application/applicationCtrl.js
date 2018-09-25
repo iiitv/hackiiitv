@@ -14,10 +14,10 @@ angular.module('reg')
       $scope.user = currentUser.data;
 
       // Is the student from IIITV?
-      $scope.isMitStudent = $scope.user.email.split('@')[1] == 'iiitv.ac.in';
+      $scope.isIIITStudent = $scope.user.email.split('@')[1] == 'iiitv.ac.in' || $scope.user.email.split('@')[1] == 'iiitvadodara.ac.in';
 
       // If so, default them to adult: true
-      if ($scope.isMitStudent){
+      if ($scope.isIIITStudent){
         $scope.user.profile.adult = true;
       }
 
