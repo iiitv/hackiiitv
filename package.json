@@ -26,6 +26,7 @@
     "morgan": "^1.6.1",
     "nodemailer": "^1.4.0",
     "nodemailer-smtp-transport": "^1.0.3",
+    "particles.js": "^2.0.0",
     "passport-local": "^1.0.0",
     "request": "^2.60.0",
     "underscore": "^1.8.3",
