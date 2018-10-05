@@ -1,6 +1,6 @@
 <div class="ui segment">
 
-  <div class="ui stackable grid">
+  <div class="">
     <div class="three wide column">
       <div class="ui header">
         Search
@@ -15,7 +15,6 @@
               <i class="search icon"></i>
           </div>
         </div>
-
       </div>
 
       <div class="ui divider"></div>
@@ -24,11 +23,13 @@
         ng-repeat="page in pages"
         ng-class="page == currentPage ? 'active pink' : ''"
         ng-click="goToPage(page)"
-        class="ui icon basic page button">
+        class="ui icon basic page button"
+        style="align-self: center">
         {{page}}
       </button>
 
     </div>
+    <hr>
     <div id="table-container" class="thirteen wide column">
       <div class="ui header">
         Users
