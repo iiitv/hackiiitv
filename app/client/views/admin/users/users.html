@@ -27,9 +27,9 @@
         style="align-self: center">
         {{page}}
       </button>
-
     </div>
     <hr>
+    
     <div id="table-container" class="thirteen wide column">
       <div class="ui header">
         Users
@@ -107,7 +107,7 @@
         <tbody>
           <tr
             ng-click="selectUser(user)"
-            ng-repeat="user in users"
+            ng-repeat="user in users | orderBy:'teamCode'"
             ng-class="rowClass(user)">
             <td>
               <strong>
