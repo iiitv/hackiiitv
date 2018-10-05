@@ -22,9 +22,8 @@ angular.module('reg')
 
       function updatePage(data){
         $scope.users = data.users;
-        console.log($scope.users)
         $scope.currentPage = data.page;
-        $scope.pageSize = data.size;
+        $scope.pageSize = 200;
 
         var p = [];
         for (var i = 0; i < data.totalPages; i++){
@@ -50,7 +49,7 @@ angular.module('reg')
       $scope.goToPage = function(page){
         $state.go('app.admin.users', {
           page: page,
-          size: $stateParams.size || 50
+          size: $stateParams.size || 200
         });
       };
 
