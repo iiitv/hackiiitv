@@ -123,4 +123,4 @@ If you want stats for your new fields:
 To customize the verification and confirmation emails for your event, put your new email templates in `server/templates/` and edit `server/services/email.js`
 
 # License
-Copyright (c) 2015-2018 Edwin Zhang (https://github.com/ehzhang). Released under AGPLv3. See [`LICENSE.txt`][license] for details.
+Copyright (c) 2015-2019 Edwin Zhang (https://github.com/ehzhang). Released under AGPLv3. See [`LICENSE.txt`][license] for details.
