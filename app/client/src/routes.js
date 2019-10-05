@@ -26,6 +26,13 @@ angular.module('reg')
             }
           }
         })
+        .state('about', {
+          url: "/about",
+          templateUrl: "views/about/about.html",
+          data: {
+            requireLogin: false
+          }
+        })
         .state('app', {
           views: {
             '': {
@@ -50,19 +57,6 @@ angular.module('reg')
           url: "/",
           templateUrl: "views/dashboard/dashboard.html",
           controller: 'DashboardCtrl',
-          resolve: {
-            currentUser: function (UserService) {
-              return UserService.getCurrentUser();
-            },
-            settings: function (SettingsService) {
-              return SettingsService.getPublicSettings();
-            }
-          },
-        })
-        .state('app.about', {
-          url: "/about",
-          templateUrl: "views/about/about.html",
-          controller: 'aboutCtrl',
           resolve: {
             currentUser: function (UserService) {
               return UserService.getCurrentUser();
