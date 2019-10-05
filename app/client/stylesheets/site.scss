@@ -1,7 +1,13 @@
 @import 'branding';
 @import 'custom';
-$font-body: 'Lato', 'Helvetica Neue', 'Helvetica', sans-serif;
-$font-header: 'Montserrat', 'Helvetica Neue', 'Helvetica', sans-serif;
+$font-body: 'Lato',
+'Helvetica Neue',
+'Helvetica',
+sans-serif;
+$font-header: 'Montserrat',
+'Helvetica Neue',
+'Helvetica',
+sans-serif;
 
 // Login screen variables
 $login-bg-color: $secondary;
@@ -33,7 +39,7 @@ $brand-tertiary: $tertiary;
 
 @mixin transform($transforms) {
   -webkit-transform: $transforms;
-          transform: $transforms;
+  transform: $transforms;
 }
 
 @mixin transition-duration($duration) {
@@ -63,7 +69,7 @@ body {
   font-family: 'Lato', 'Helvetica Neue', 'Helvetica', sans-serif;
   font-weight: 300;
 
-  > .container {
+  >.container {
     width: 100%;
     height: 100%;
   }
@@ -83,28 +89,37 @@ body {
   border-radius: 0;
   box-shadow: none;
 }
+
 input {
   border-radius: 0 !important;
 }
+
 .ui.button {
   border-radius: 0;
+
   &.primary {
     background: $primary;
+
     &:hover {
       background: lighten($primary, 3%);
     }
+
     &:active {
       background: darken($primary, 3%);
     }
   }
+
   &.secondary {
     background: $secondary;
+
     &:hover {
       background: lighten($secondary, 3%);
     }
+
     &:active {
       background: darken($secondary, 3%);
     }
+
     &:focus {
       background: $secondary;
     }
@@ -120,7 +135,28 @@ fieldset {
   border: none;
 }
 
-.ui.search >.results {
+.ui.search>.results {
   width: 100%;
 }
+
 // @import 'animation';
+
+::-webkit-scrollbar {
+  width: 10px;
+
+  @media screen and (max-width: 930px) {
+    width: 7px;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #597f9b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #18335C;
+}

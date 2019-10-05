@@ -3,186 +3,199 @@ angular.module('reg')
     '$stateProvider',
     '$urlRouterProvider',
     '$locationProvider',
-    function(
+    function (
       $stateProvider,
       $urlRouterProvider,
       $locationProvider) {
 
-    // For any unmatched url, redirect to /state1
-    $urlRouterProvider.otherwise("/404");
+      // For any unmatched url, redirect to /state1
+      $urlRouterProvider.otherwise("/404");
 
-    // Set up de states
-    $stateProvider
-      .state('login', {
-        url: "/login",
-        templateUrl: "views/login/login.html",
-        controller: 'LoginCtrl',
-        data: {
-          requireLogin: false
-        },
-        resolve: {
-          'settings': function(SettingsService){
-            return SettingsService.getPublicSettings();
-          }
-        }
-      })
-      .state('app', {
-        views: {
-          '': {
-            templateUrl: "views/base.html"
+      // Set up de states
+      $stateProvider
+        .state('login', {
+          url: "/login",
+          templateUrl: "views/login/login.html",
+          controller: 'LoginCtrl',
+          data: {
+            requireLogin: false
           },
-          'sidebar@app': {
-            templateUrl: "views/sidebar/sidebar.html",
-            controller: 'SidebarCtrl',
-            resolve: {
-              'settings' : function(SettingsService) {
-                return SettingsService.getPublicSettings();
-              }
+          resolve: {
+            'settings': function (SettingsService) {
+              return SettingsService.getPublicSettings();
             }
+          }
+        })
+        .state('app', {
+          views: {
+            '': {
+              templateUrl: "views/base.html"
+            },
+            'sidebar@app': {
+              templateUrl: "views/sidebar/sidebar.html",
+              controller: 'SidebarCtrl',
+              resolve: {
+                'settings': function (SettingsService) {
+                  return SettingsService.getPublicSettings();
+                }
+              }
 
-          }
-        },
-        data: {
-          requireLogin: true
-        }
-      })
-      .state('app.dashboard', {
-        url: "/",
-        templateUrl: "views/dashboard/dashboard.html",
-        controller: 'DashboardCtrl',
-        resolve: {
-          currentUser: function(UserService){
-            return UserService.getCurrentUser();
+            }
           },
-          settings: function(SettingsService){
-            return SettingsService.getPublicSettings();
+          data: {
+            requireLogin: true
           }
-        },
-      })
-      .state('app.application', {
-        url: "/application",
-        templateUrl: "views/application/application.html",
-        controller: 'ApplicationCtrl',
-        data: {
-          requireVerified: true
-        },
-        resolve: {
-          currentUser: function(UserService){
-            return UserService.getCurrentUser();
+        })
+        .state('app.dashboard', {
+          url: "/",
+          templateUrl: "views/dashboard/dashboard.html",
+          controller: 'DashboardCtrl',
+          resolve: {
+            currentUser: function (UserService) {
+              return UserService.getCurrentUser();
+            },
+            settings: function (SettingsService) {
+              return SettingsService.getPublicSettings();
+            }
           },
-          settings: function(SettingsService){
-            return SettingsService.getPublicSettings();
-          }
-        }
-      })
-      .state('app.confirmation', {
-        url: "/confirmation",
-        templateUrl: "views/confirmation/confirmation.html",
-        controller: 'ConfirmationCtrl',
-        data: {
-          requireAdmitted: true
-        },
-        resolve: {
-          currentUser: function(UserService){
-            return UserService.getCurrentUser();
-          }
-        }
-      })
-      .state('app.team', {
-        url: "/team",
-        templateUrl: "views/team/team.html",
-        controller: 'TeamCtrl',
-        data: {
-          requireVerified: true
-        },
-        resolve: {
-          currentUser: function(UserService){
-            return UserService.getCurrentUser();
+        })
+        .state('app.about', {
+          url: "/about",
+          templateUrl: "views/about/about.html",
+          controller: 'aboutCtrl',
+          resolve: {
+            currentUser: function (UserService) {
+              return UserService.getCurrentUser();
+            },
+            settings: function (SettingsService) {
+              return SettingsService.getPublicSettings();
+            }
           },
-          settings: function(SettingsService){
-            return SettingsService.getPublicSettings();
+        })
+        .state('app.application', {
+          url: "/application",
+          templateUrl: "views/application/application.html",
+          controller: 'ApplicationCtrl',
+          data: {
+            requireVerified: true
+          },
+          resolve: {
+            currentUser: function (UserService) {
+              return UserService.getCurrentUser();
+            },
+            settings: function (SettingsService) {
+              return SettingsService.getPublicSettings();
+            }
           }
-        }
-      })
-      .state('app.admin', {
-        views: {
-          '': {
-            templateUrl: "views/admin/admin.html",
-            controller: 'AdminCtrl'
+        })
+        .state('app.confirmation', {
+          url: "/confirmation",
+          templateUrl: "views/confirmation/confirmation.html",
+          controller: 'ConfirmationCtrl',
+          data: {
+            requireAdmitted: true
+          },
+          resolve: {
+            currentUser: function (UserService) {
+              return UserService.getCurrentUser();
+            }
           }
-        },
-        data: {
-          requireAdmin: true
-        }
-      })
-      .state('app.admin.stats', {
-        url: "/admin",
-        templateUrl: "views/admin/stats/stats.html",
-        controller: 'AdminStatsCtrl'
-      })
-      .state('app.admin.users', {
-        url: "/admin/users?" +
-          '&page' +
-          '&size' +
-          '&query',
-        templateUrl: "views/admin/users/users.html",
-        controller: 'AdminUsersCtrl'
-      })
-      .state('app.admin.user', {
-        url: "/admin/users/:id",
-        templateUrl: "views/admin/user/user.html",
-        controller: 'AdminUserCtrl',
-        resolve: {
-          'user': function($stateParams, UserService){
-            return UserService.get($stateParams.id);
+        })
+        .state('app.team', {
+          url: "/team",
+          templateUrl: "views/team/team.html",
+          controller: 'TeamCtrl',
+          data: {
+            requireVerified: true
+          },
+          resolve: {
+            currentUser: function (UserService) {
+              return UserService.getCurrentUser();
+            },
+            settings: function (SettingsService) {
+              return SettingsService.getPublicSettings();
+            }
           }
-        }
-      })
-      .state('app.admin.settings', {
-        url: "/admin/settings",
-        templateUrl: "views/admin/settings/settings.html",
-        controller: 'AdminSettingsCtrl',
-      })
-      .state('reset', {
-        url: "/reset/:token",
-        templateUrl: "views/reset/reset.html",
-        controller: 'ResetCtrl',
-        data: {
-          requireLogin: false
-        }
-      })
-      .state('verify', {
-        url: "/verify/:token",
-        templateUrl: "views/verify/verify.html",
-        controller: 'VerifyCtrl',
-        data: {
-          requireLogin: false
-        }
-      })
-      .state('404', {
-        url: "/404",
-        templateUrl: "views/404.html",
-        data: {
-          requireLogin: false
-        }
+        })
+        .state('app.admin', {
+          views: {
+            '': {
+              templateUrl: "views/admin/admin.html",
+              controller: 'AdminCtrl'
+            }
+          },
+          data: {
+            requireAdmin: true
+          }
+        })
+        .state('app.admin.stats', {
+          url: "/admin",
+          templateUrl: "views/admin/stats/stats.html",
+          controller: 'AdminStatsCtrl'
+        })
+        .state('app.admin.users', {
+          url: "/admin/users?" +
+            '&page' +
+            '&size' +
+            '&query',
+          templateUrl: "views/admin/users/users.html",
+          controller: 'AdminUsersCtrl'
+        })
+        .state('app.admin.user', {
+          url: "/admin/users/:id",
+          templateUrl: "views/admin/user/user.html",
+          controller: 'AdminUserCtrl',
+          resolve: {
+            'user': function ($stateParams, UserService) {
+              return UserService.get($stateParams.id);
+            }
+          }
+        })
+        .state('app.admin.settings', {
+          url: "/admin/settings",
+          templateUrl: "views/admin/settings/settings.html",
+          controller: 'AdminSettingsCtrl',
+        })
+        .state('reset', {
+          url: "/reset/:token",
+          templateUrl: "views/reset/reset.html",
+          controller: 'ResetCtrl',
+          data: {
+            requireLogin: false
+          }
+        })
+        .state('verify', {
+          url: "/verify/:token",
+          templateUrl: "views/verify/verify.html",
+          controller: 'VerifyCtrl',
+          data: {
+            requireLogin: false
+          }
+        })
+        .state('404', {
+          url: "/404",
+          templateUrl: "views/404.html",
+          data: {
+            requireLogin: false
+          }
+        });
+
+      $locationProvider.html5Mode({
+        enabled: true,
       });
 
-    $locationProvider.html5Mode({
-      enabled: true,
-    });
-
-  }])
+    }])
   .run([
     '$rootScope',
     '$state',
     'Session',
-    function(
+    function (
       $rootScope,
       $state,
-      Session ){
+      Session) {
 
-      $rootScope.$on('$stateChangeSuccess', function() {
-         document.body.scrollTop = document.documentElement.scrollTop = 0;
+      $rootScope.$on('$stateChangeSuccess', function () {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
       });
 
       $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
@@ -201,7 +214,7 @@ angular.module('reg')
           $state.go('app.dashboard');
         }
 
-        if (requireVerified && !Session.getUser().verified){
+        if (requireVerified && !Session.getUser().verified) {
           event.preventDefault();
           $state.go('app.dashboard');
         }

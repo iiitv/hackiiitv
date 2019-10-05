@@ -8,7 +8,7 @@
     "async": "^1.4.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.8.4",
-    "bower": "^1.8.0",
+    "bower": "^1.8.8",
     "dotenv": "^1.2.0",
     "email-templates": "^2.0.1",
     "express": "^4.9.8",
