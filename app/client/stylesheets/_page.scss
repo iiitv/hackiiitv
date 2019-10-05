@@ -1,6 +1,7 @@
 .page {
   padding-top: 2em;
   padding-bottom: 4em;
+
   .title {
     font-family: $font-header;
     text-transform: uppercase;
@@ -9,20 +10,32 @@
     color: $page-header-color;
     letter-spacing: 8px;
     font-weight: 700;
+
     &.divided:after {
-        content: " ";
-        width: 200px;
-        display: block;
-        margin: 1em auto 2em;
-        border-bottom: 4px solid $page-header-color;
+      content: " ";
+      width: 200px;
+      display: block;
+      margin: 1em auto 2em;
+      border-bottom: 4px solid $page-header-color;
     }
 
     &.small {
       font-size: 1em;
       letter-spacing: 4px;
+
       &:after {
         border-width: 2px;
       }
+    }
+  }
+
+  .logo {
+    text-align: right;
+
+    img {
+      height: 5rem;
+      width: 5rem;
+      margin-right: 2.5rem;
     }
   }
 
@@ -30,6 +43,7 @@
     .title {
       font-size: 1em;
       letter-spacing: 4px;
+
       &:after {
         border-width: 2px;
       }
@@ -47,6 +61,14 @@
   .page {
     .title {
       font-size: 1.25em;
+    }
+
+    .logo {
+      text-align: center;
+
+      img {
+        margin-right: 0px;
+      }
     }
   }
 }
