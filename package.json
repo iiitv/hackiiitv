@@ -23,7 +23,7 @@
     "jsonwebtoken": "5.0.4",
     "method-override": "^2.3.5",
     "moment": "^2.10.3",
-    "mongoose": "^4.1.2",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "nodemailer": "^1.4.0",
     "nodemailer-smtp-transport": "^1.0.3",
