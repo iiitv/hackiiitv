@@ -19,7 +19,7 @@
       okay to fix that.</li>
     <li>If any team is found to have plagiarised their hack, the team shall
         be disqualified immediately & will not be allowed to participate in
-        any technical event of institute in academic year 2019-20.</li>
+        any technical event of institute in academic year 2020-21.</li>
      <li>If any team is found to have made major changes to their work
          product after submission then the team will be disqualified
          immediately.</li>
@@ -33,7 +33,7 @@
 # <h3>Venue:</h3>
 Sabar Hostel premises
 # <h3>Time:</h3>
-Date: 5th October 2019 (Saturday) 10:00 AM to 6th October 2019 (Sunday) 10:00 AM.
+Date: 5th October 2029 (Saturday) 10:00 AM to 6th October 2020 (Sunday) 10:00 AM.
 # Code of Conduct
 
  [Code of Conduct](https://github.com/iiitv/getmein-web/blob/master/CODE_OF_CONDUCT.md)
