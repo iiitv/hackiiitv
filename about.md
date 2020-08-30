@@ -33,7 +33,7 @@
 # <h3>Venue:</h3>
 Sabar Hostel premises
 # <h3>Time:</h3>
-Date: 5th October 2020 (Saturday) 10:00 AM to 6th October 2020 (Sunday) 10:00 AM.
+Date: 5th October 2020 (Monday) 10:00 AM to 6th October 2020 (Tuesday) 10:00 AM.
 # Code of Conduct
 
  [Code of Conduct](https://github.com/iiitv/getmein-web/blob/master/CODE_OF_CONDUCT.md)
