@@ -64,7 +64,7 @@ On the Settings tab, admins can easily control their event application timeline 
 | ------------------------------------------- | ------- |
 | [GCC 4.6](https://gcc.gnu.org) | `4.6+` |
 | [Node.js](http://nodejs.org)                | `8.0+`  |
-| [MongoDB](www.mongodb.com/) | `3.0+`  |
+| [MongoDB](https://www.mongodb.com/) | `3.0+`  |
 
 > _Updating to the latest releases is recommended_.
 
