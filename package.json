@@ -22,7 +22,7 @@
     "handlebars": "^4.7.7",
     "jsonwebtoken": "5.0.4",
     "method-override": "^2.3.5",
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "nodemailer": "^6.6.1",
